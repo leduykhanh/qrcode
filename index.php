@@ -30,17 +30,18 @@ $jsonurl =
         "phone=$phone";
 $json        = file_get_contents($jsonurl, 0, null, null);
 $json_output = json_decode($json);
-echo $json;
+//echo $json;
 if (isset($json_output->result->error)) {
 	$error       = $json_output->result->error;
     echo "{$error->code}, {$error->message}";
 } else {
     $user = $json_output->result;
-    echo "{$user->loginname}, {$user->apikey}";
-	$create_url = "http://qr.scan4.cash/api/short?key=".$user->apikey."&url=http://www.findglasses.com";
+  //  echo "{$user->loginname}, {$user->apikey}";
+	$create_url = "http://qr.scan4.cash/api/short?key=".$user->apikey."url=http://www.scan4.cash";
 	$cjson        = file_get_contents($create_url, 0, null, null);
 	$cjson_output = json_decode($cjson);
-	echo "QR Code generated!";
+	echo "<span style='font: normal normal normal 18px/1.4em raleway,sans-serif;
+    color: #A0A09F;margin:0 auto;'>Your QR Code has been generated! Please Log in to view and Scan it</span>";
 }
   
 ?>
