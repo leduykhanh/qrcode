@@ -36,8 +36,8 @@ if (isset($json_output->result->error)) {
     echo "{$error->code}, {$error->message}";
 } else {
     $user = $json_output->result;
-  //  echo "{$user->loginname}, {$user->apikey}";
-	$create_url = "http://qr.scan4.cash/api/short?key=".$user->apikey."url=http://www.scan4.cash";
+    //echo "{$user->loginname}, {$user->apikey}";
+	$create_url = "http://qr.scan4.cash/api/short?key=".$user->apikey."&url=http://www.scan4.cash&gps=1&sms=1&notify=1";
 	$cjson        = file_get_contents($create_url, 0, null, null);
 	$cjson_output = json_decode($cjson);
 	echo "<span style='font: normal normal normal 18px/1.4em raleway,sans-serif;
